@@ -15,11 +15,11 @@ export async function main(ns) {
 		if (target == true) { targets.push(info.hostname); }
 		if (node == true) { nodes.push(info.hostname); }
 
-		network.push({ 
-			"hostname": info.hostname, 
-			"node": node, 
-			"target": target, 
-			"maxRam": info.maxRam, 
+		network.push({
+			"hostname": info.hostname,
+			"node": node,
+			"target": target,
+			"maxRam": info.maxRam,
 			"moneyMax": info.moneyMax,
 			"numOpenPortsRequired": info.numOpenPortsRequired,
 			"requiredHackingSkill": info.requiredHackingSkill,
@@ -31,7 +31,7 @@ export async function main(ns) {
 	await ns.write("nodes.txt", JSON.stringify(nodes), "w");
 	await ns.write("targets.txt", JSON.stringify(targets), "w");
 	await ns.write("network.txt", JSON.stringify(network), "w");
-	
+
 }
 
 /** @param {NS} ns **/
@@ -48,6 +48,9 @@ function scan_host(ns, parent, hostname, list) {
         if (parent == child) {
             continue;
         }
+		if (child == "." || child == "run4theh111z") {
+			ns.tprint(parent + " => " + child);
+		}
         list.push(child);
         scan_host(ns, hostname, child, list);
     }
