@@ -53,7 +53,7 @@ function scan_host(ns, parent, hostname, list) {
         if (parent == child) {
             continue;
         }
-        if (child == "." || child == "run4theh111z") {
+        if (child == "." || child == "run4theh111z" || child == "w0r1d_d43m0n") {
             ns.tprint(parent + " => " + child);
         }
         list.push(child);
